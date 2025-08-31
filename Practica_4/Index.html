@@ -1,16 +1,208 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practica 4</title>
+    <title>PizzaDelizia | Pizzería Artesanal</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="Img/logo.jpg">
+    <link rel="shortcut icon" href="Img/logo.jpg" type="image/png">
+    <!-- Bootstrap 5 CSS & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+    :root {
+    --color-primary: #d35400;
+    --color-secondary: #c0392b;
+    --color-accent: #f4d03f;
+    --color-bg: #fff8f3;
+    --color-dark: #222;
+    }
+
+    body {
+        background: var(--color-bg);
+        font-family: 'Roboto', Arial, sans-serif;
+        color: var(--color-dark);
+    }
+
+    /* Navbar */
+    .navbar {
+        background: linear-gradient(90deg, #c0392b 0%, #d35400 100%);
+        font-family: 'Montserrat', Arial, sans-serif;
+        letter-spacing: .5px;
+    }
+    .navbar-brand {
+        font-weight: 700;
+        font-size: 1.35rem;
+        letter-spacing: 1px;
+    }
+    .navbar .nav-link {
+        color: #fff !important;
+        font-weight: 500;
+        margin-right: .5rem;
+        transition: color .18s;
+    }
+    .navbar .nav-link.active,
+    .navbar .nav-link:hover {
+        color: var(--color-accent) !important;
+    }
+
+    /* ===== Carrusel reducido ===== */
+    #pizzaCarousel .carousel-item {
+        height: 48vh;        /* altura fija en pantallas grandes */
+        min-height: 300px;   /* altura mínima */
+    }
+    #pizzaCarousel .carousel-item img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;   /* recorta sin deformar */
+        object-position: center;
+    }
+    #pizzaCarousel .carousel-caption {
+        background: rgba(34,34,34,0.55);
+        border-radius: .7rem;
+        padding: 1rem 1.5rem;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+        bottom: 2rem;
+    }
+    #pizzaCarousel h2 {
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-size: 1.9rem;
+        color: var(--color-accent);
+        text-shadow: 1px 2px 8px #0007;
+    }
+    #pizzaCarousel p {
+        font-size: 1.05rem;
+        color: #fff;
+    }
+
+    /* Sobre Nosotros */
+    #sobre-nosotros h3 {
+        color: var(--color-primary);
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-weight: 700;
+    }
+    #sobre-nosotros .lead {
+        color: #444;
+    }
+
+    /* Menú */
+    #menu h2,
+    #promociones h2,
+    #contacto h2 {
+        color: var(--color-secondary);
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-weight: 700;
+    }
+    #menu .card {
+        border: none;
+        border-radius: 1.1rem;
+        transition: transform .18s, box-shadow .18s;
+        box-shadow: 0 2px 14px rgba(211,84,0,0.07);
+        overflow: hidden;
+    }
+    #menu .card:hover {
+        transform: translateY(-8px) scale(1.025);
+        box-shadow: 0 10px 32px rgba(192,57,43,0.13);
+    }
+    #menu .card-title {
+        color: var(--color-primary);
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-weight: 600;
+    }
+    #menu .btn-primary {
+        background: var(--color-primary);
+        border: none;
+        font-weight: 600;
+        letter-spacing: .5px;
+    }
+    #menu .btn-primary:hover {
+        background: var(--color-secondary);
+    }
+
+    /* Promociones */
+    #promociones .card {
+        border-radius: 1rem;
+        border-width: 2px;
+    }
+    #promociones .card-title {
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-weight: 700;
+    }
+
+    /* Contacto */
+    #contactForm {
+        border: 1.5px solid #eee;
+    }
+    #contactForm .btn-primary {
+        background: var(--color-secondary);
+        border: none;
+        font-weight: 600;
+    }
+    #contactForm .btn-primary:hover {
+        background: var(--color-primary);
+    }
+
+    /* Footer */
+    footer {
+        background: linear-gradient(90deg, #c0392b 0%, #d35400 100%);
+        color: #fff;
+        letter-spacing: .4px;
+        font-size: 1rem;
+    }
+    footer a {
+        color: #fff;
+        opacity: .85;
+        transition: opacity .15s;
+    }
+    footer a:hover {
+        opacity: 1;
+        color: var(--color-accent);
+    }
+
+    /* Modal */
+    .modal-header {
+        background: var(--color-primary);
+        color: #fff;
+    }
+    .modal-title {
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-weight: 700;
+    }
+    .modal-content {
+        border-radius: 1rem;
+    }
+
+    /* Toast */
+    .toast-success {
+        background: linear-gradient(90deg, #d35400 0%, #f4d03f 100%);
+        color: #222;
+        font-weight: 600;
+    }
+
+    /* Responsivo */
+    @media (max-width: 992px) {
+        #pizzaCarousel .carousel-item { height: 42vh; }
+    }
+    @media (max-width: 576px) {
+        #pizzaCarousel .carousel-item { height: 34vh; }
+        #pizzaCarousel h2 { font-size: 1.2rem; }
+        #pizzaCarousel p  { font-size: .9rem; }
+        #menu .card-title { font-size: 1.05rem; }
+        #menu .card-text  { font-size: .95rem; }
+    }
+
+    </style>
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="https://img.icons8.com/color/48/000000/pizza.png" alt="Logo" width="40" height="40" class="me-2">
+            <a class="navbar-brand d-flex align-items-center" href="#inicio">
+                <img src="https://img.icons8.com/color/48/000000/pizza.png" alt="Logo" width="36" height="36" class="me-2">
                 PizzaDelizia
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -30,32 +222,42 @@
 
     <!-- Carrusel -->
     <section id="inicio" class="mt-0">
-        <div id="pizzaCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div id="pizzaCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4200">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#pizzaCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#pizzaCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#pizzaCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Pizza 1">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1400&q=80" class="d-block w-100" alt="Pizza artesanal" loading="lazy">
                     <div class="carousel-caption d-none d-md-block">
                         <h2>¡Las mejores pizzas artesanales!</h2>
+                        <p>Ingredientes frescos, masa recién hecha y recetas tradicionales.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1548365328-8b849e6c7e07?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Pizza 2">
+                    <img src="Img/pizza para compartir.jpg" class="d-block w-100" alt="Pizza para compartir" loading="lazy">
                     <div class="carousel-caption d-none d-md-block">
-                        <h2>Ingredientes frescos y de calidad</h2>
+                        <h2>Sabor que une</h2>
+                        <p>Perfectas para compartir con familia y amigos.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Pizza 3">
+                    <img src="Img/pizza calida.jpg" class="d-block w-100" alt="Ambiente cálido" loading="lazy">
                     <div class="carousel-caption d-none d-md-block">
-                        <h2>¡Ven y disfruta con nosotros!</h2>
+                        <h2>¡Ven y disfruta!</h2>
+                        <p>Ambiente cálido y atención dedicada.</p>
                     </div>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#pizzaCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#pizzaCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
             </button>
         </div>
     </section>
@@ -63,14 +265,17 @@
     <!-- Sobre Nosotros -->
     <section id="sobre-nosotros" class="py-5 bg-light">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 mb-4 mb-md-0">
-                    <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded" alt="Sobre Nosotros">
+            <div class="row align-items-center gy-4">
+                <div class="col-md-6">
+                    <img src="Img/PizzaDelizia.jpg" class="img-fluid rounded shadow" alt="Sobre Nosotros" loading="lazy">
                 </div>
                 <div class="col-md-6">
-                    <h3>Sobre Nosotros</h3>
-                    <p>
-                        En <strong>PizzaDelizia</strong> llevamos más de 15 años compartiendo nuestra pasión por la pizza. Utilizamos recetas tradicionales italianas y los mejores ingredientes frescos para ofrecerte una experiencia única en cada bocado. Nuestro compromiso es brindarte calidad, sabor y un ambiente acogedor para que disfrutes con familia y amigos.
+                    <h3 class="mb-3">Sobre Nosotros</h3>
+                    <p class="lead mb-2">
+                        En <strong>PizzaDelizia</strong> combinamos tradición y creatividad. Nuestra masa se fermenta lentamente para lograr textura y sabor únicos. Seleccionamos ingredientes premium y trabajamos con productores locales.
+                    </p>
+                    <p class="mb-0">
+                        Abiertos todos los días. Opciones vegetarianas y sin gluten disponibles bajo pedido.
                     </p>
                 </div>
             </div>
@@ -82,86 +287,86 @@
         <div class="container">
             <h2 class="text-center mb-5">Nuestro Menú</h2>
             <div class="row g-4">
-                <!-- Pizza 1 -->
-                <div class="col-md-4">
-                    <div class="card h-100 shadow">
-                        <img src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Margherita">
+                <!-- Margherita -->
+                <div class="col-sm-6 col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="Img/pizza de Margherita.jpg" class="card-img-top" alt="Margherita" loading="lazy">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Margherita</h5>
-                            <p class="card-text">Salsa de tomate, mozzarella fresca, albahaca y aceite de oliva virgen extra.</p>
+                            <p class="card-text">Salsa de tomate, mozzarella fresca, albahaca y aceite de oliva.</p>
                             <div class="mt-auto d-flex justify-content-between align-items-center">
                                 <span class="fw-bold">$120</span>
-                                <button class="btn btn-primary ordenar-btn">Ordenar</button>
+                                <button class="btn btn-primary ordenar-btn" data-nombre="Margherita" data-precio="120">Ordenar</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Pizza 2 -->
-                <div class="col-md-4">
-                    <div class="card h-100 shadow">
-                        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Pepperoni">
+                <!-- Pepperoni -->
+                <div class="col-sm-6 col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="Img/pizza de pepperoni.jpg" class="card-img-top" alt="Pepperoni" loading="lazy">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Pepperoni</h5>
-                            <p class="card-text">Salsa de tomate, mozzarella y abundante pepperoni crujiente.</p>
+                            <p class="card-text">Mozzarella, abundante pepperoni crujiente y salsa artesanal.</p>
                             <div class="mt-auto d-flex justify-content-between align-items-center">
                                 <span class="fw-bold">$140</span>
-                                <button class="btn btn-primary ordenar-btn">Ordenar</button>
+                                <button class="btn btn-primary ordenar-btn" data-nombre="Pepperoni" data-precio="140">Ordenar</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Pizza 3 -->
-                <div class="col-md-4">
-                    <div class="card h-100 shadow">
-                        <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Cuatro Quesos">
+                <!-- Cuatro Quesos -->
+                <div class="col-sm-6 col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="Img/pizza de Cuatro Quesos.jpg" class="card-img-top" alt="Cuatro Quesos" loading="lazy">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Cuatro Quesos</h5>
                             <p class="card-text">Mozzarella, gorgonzola, parmesano y queso de cabra sobre salsa de tomate.</p>
                             <div class="mt-auto d-flex justify-content-between align-items-center">
                                 <span class="fw-bold">$150</span>
-                                <button class="btn btn-primary ordenar-btn">Ordenar</button>
+                                <button class="btn btn-primary ordenar-btn" data-nombre="Cuatro Quesos" data-precio="150">Ordenar</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Pizza 4 -->
-                <div class="col-md-4">
-                    <div class="card h-100 shadow">
-                        <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Hawaiana">
+                <!-- Hawaiana -->
+                <div class="col-sm-6 col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="Img/pizza de Hawaiana.jpg" class="card-img-top" alt="Hawaiana" loading="lazy">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Hawaiana</h5>
-                            <p class="card-text">Jamón, piña, mozzarella y salsa de tomate.</p>
+                            <p class="card-text">Jamón, piña caramelizada y mozzarella en base de tomate.</p>
                             <div class="mt-auto d-flex justify-content-between align-items-center">
                                 <span class="fw-bold">$135</span>
-                                <button class="btn btn-primary ordenar-btn">Ordenar</button>
+                                <button class="btn btn-primary ordenar-btn" data-nombre="Hawaiana" data-precio="135">Ordenar</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Pizza 5 -->
-                <div class="col-md-4">
-                    <div class="card h-100 shadow">
-                        <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Vegetariana">
+                <!-- Vegetariana -->
+                <div class="col-sm-6 col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="Img/pizza de Vegetariana.jpg" class="card-img-top" alt="Vegetariana" loading="lazy">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Vegetariana</h5>
                             <p class="card-text">Pimientos, champiñones, cebolla, aceitunas y mozzarella.</p>
                             <div class="mt-auto d-flex justify-content-between align-items-center">
                                 <span class="fw-bold">$130</span>
-                                <button class="btn btn-primary ordenar-btn">Ordenar</button>
+                                <button class="btn btn-primary ordenar-btn" data-nombre="Vegetariana" data-precio="130">Ordenar</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Pizza 6 -->
-                <div class="col-md-4">
-                    <div class="card h-100 shadow">
-                        <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0723c6e?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Mexicana">
+                <!-- Mexicana -->
+                <div class="col-sm-6 col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="Img/pizza de Mexicana.jpg" class="card-img-top" alt="Mexicana" loading="lazy">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Mexicana</h5>
-                            <p class="card-text">Chorizo, jalapeños, cebolla morada, elote y mozzarella.</p>
+                            <p class="card-text">Chorizo, jalapeños, cebolla morada y maíz tierno.</p>
                             <div class="mt-auto d-flex justify-content-between align-items-center">
                                 <span class="fw-bold">$145</span>
-                                <button class="btn btn-primary ordenar-btn">Ordenar</button>
+                                <button class="btn btn-primary ordenar-btn" data-nombre="Mexicana" data-precio="145">Ordenar</button>
                             </div>
                         </div>
                     </div>
@@ -176,19 +381,19 @@
             <h2 class="text-center mb-5">Promociones Destacadas</h2>
             <div class="row g-4 justify-content-center">
                 <div class="col-md-6 col-lg-4">
-                    <div class="card border-success h-100 shadow">
+                    <div class="card border-success h-100 shadow-sm">
                         <div class="card-body text-center">
                             <h5 class="card-title text-success">2x1 en Pizzas Clásicas</h5>
-                            <p class="card-text">Todos los martes disfruta de 2x1 en nuestras pizzas Margherita y Pepperoni.</p>
+                            <p class="card-text">Todos los martes disfruta de 2x1 en Margherita y Pepperoni.</p>
                             <span class="badge bg-success">Martes</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card border-warning h-100 shadow">
+                    <div class="card border-warning h-100 shadow-sm">
                         <div class="card-body text-center">
                             <h5 class="card-title text-warning">Pizza + Refresco</h5>
-                            <p class="card-text">Llévate cualquier pizza grande y un refresco por solo $160. ¡Solo los viernes!</p>
+                            <p class="card-text">Cualquier pizza grande + refresco por $160. Solo viernes.</p>
                             <span class="badge bg-warning text-dark">Viernes</span>
                         </div>
                     </div>
@@ -197,7 +402,7 @@
         </div>
     </section>
 
-    <!-- Formulario de Contacto -->
+    <!-- Contacto -->
     <section id="contacto" class="py-5">
         <div class="container">
             <h2 class="text-center mb-5">Contáctanos</h2>
@@ -207,14 +412,17 @@
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>
                             <input type="text" class="form-control" id="nombre" required>
+                            <div class="invalid-feedback">Por favor ingresa tu nombre.</div>
                         </div>
                         <div class="mb-3">
                             <label for="correo" class="form-label">Correo electrónico</label>
                             <input type="email" class="form-control" id="correo" required>
+                            <div class="invalid-feedback">Ingresa un correo válido.</div>
                         </div>
                         <div class="mb-3">
                             <label for="mensaje" class="form-label">Mensaje</label>
                             <textarea class="form-control" id="mensaje" rows="4" required></textarea>
+                            <div class="invalid-feedback">Por favor escribe tu mensaje.</div>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Enviar</button>
                         <div id="formAlert" class="alert alert-success mt-3 d-none" role="alert">
@@ -227,93 +435,155 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
+    <footer class="py-4">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-4 mb-3 mb-md-0 text-center text-md-start">
-                    <h5>PizzaDelizia</h5>
-                    <p class="mb-0">Av. Italia 123, Ciudad Pizza, MX</p>
-                    <p class="mb-0">Tel: (555) 123-4567</p>
+            <div class="row align-items-center gy-3">
+                <div class="col-md-4 text-center text-md-start">
+                    <h5 class="mb-1">PizzaDelizia</h5>
+                    <p class="mb-0 small">Av. Italia 123, Ciudad Pizza, MX · Tel: (555) 123-4567</p>
                 </div>
-                <div class="col-md-4 mb-3 mb-md-0 text-center">
-                    <a href="#" class="text-white me-3 fs-4"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="text-white me-3 fs-4"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="text-white fs-4"><i class="bi bi-twitter"></i></a>
+                <div class="col-md-4 text-center">
+                    <a href="https://www.facebook.com/" class="me-3 fs-4" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/" class="me-3 fs-4" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://x.com/" class="fs-4" aria-label="x"><i class="bi bi-twitter"></i></a>
                 </div>
                 <div class="col-md-4 text-center text-md-end">
-                    <small>&copy; 2024 PizzaDelizia. Todos los derechos reservados.</small>
+                    <small>&copy; 2025 PizzaDelizia. Todos los derechos reservados.</small>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap 5 CSS & Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Modal de Orden -->
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="orderForm" novalidate>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="orderModalLabel">Ordenar</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="ordenProducto" class="mb-1 fw-bold"></p>
+                        <p id="ordenPrecio" class="mb-3"></p>
+                        <div class="mb-3">
+                            <label for="ordNombre" class="form-label">Nombre</label>
+                            <input type="text" id="ordNombre" class="form-control" required>
+                            <div class="invalid-feedback">Por favor ingresa tu nombre.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ordTelefono" class="form-label">Teléfono</label>
+                            <input type="tel" id="ordTelefono" class="form-control" pattern="[0-9\s\-+()]{7,}" required>
+                            <div class="invalid-feedback">Ingresa un teléfono válido.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ordCantidad" class="form-label">Cantidad</label>
+                            <input type="number" id="ordCantidad" class="form-control" value="1" min="1" required>
+                            <div class="invalid-feedback">Cantidad mínima: 1</div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Confirmar Orden</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-    <!-- Custom CSS -->
-    <style>
-        body {
-            background: #f8f9fa;
-            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-        }
-        .navbar-brand {
-            font-weight: bold;
-            font-size: 1.5rem;
-            letter-spacing: 1px;
-        }
-        .carousel-caption {
-            background: rgba(0,0,0,0.5);
-            border-radius: 10px;
-            padding: 1rem 2rem;
-        }
-        #menu .card-title {
-            color: #d35400;
-        }
-        #menu .card {
-            transition: transform 0.2s;
-        }
-        #menu .card:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-        }
-        #promociones .card-title {
-            font-size: 1.2rem;
-        }
-        footer {
-            letter-spacing: 0.5px;
-        }
-        @media (max-width: 767px) {
-            .carousel-caption h2 {
-                font-size: 1.2rem;
-            }
-            #menu .card-title {
-                font-size: 1rem;
-            }
-        }
-    </style>
+    <!-- Toast de Confirmación -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080;">
+        <div id="orderToast" class="toast toast-success align-items-center border-0" role="alert" aria-live="polite" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">¡Orden recibida! Nos contactaremos pronto.</div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap 5 JS & Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
     <!-- Custom JS -->
     <script>
-        // Ordenar botón
-        document.querySelectorAll('.ordenar-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                alert('¡Gracias por tu orden! Pronto nos pondremos en contacto.');
-            });
+    // Scroll suave para navegación
+    document.querySelectorAll('a.nav-link').forEach(a => {
+        a.addEventListener('click', function(e) {
+            if (this.hash && document.querySelector(this.hash)) {
+                e.preventDefault();
+                document.querySelector(this.hash).scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Cambia la clase active
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            }
         });
+    });
 
-        // Formulario de contacto
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('formAlert').classList.remove('d-none');
-            this.reset();
-            setTimeout(() => {
-                document.getElementById('formAlert').classList.add('d-none');
-            }, 4000);
+    // Modal de Orden: muestra producto y precio correctos
+    const orderModalEl = document.getElementById('orderModal');
+    const orderModal = new bootstrap.Modal(orderModalEl);
+    let productoActual = '';
+    let precioActual = '';
+    document.querySelectorAll('.ordenar-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            productoActual = btn.dataset.nombre || 'Producto';
+            precioActual = btn.dataset.precio || '0';
+            document.getElementById('ordenProducto').textContent = productoActual;
+            document.getElementById('ordenPrecio').textContent = 'Precio: $' + precioActual;
+            document.getElementById('orderForm').reset();
+            document.querySelectorAll('#orderForm .form-control').forEach(f => f.classList.remove('is-invalid'));
+            orderModal.show();
         });
+    });
+
+    // Validación y envío del formulario de orden
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        let valid = true;
+        // Validación simple
+        const nombre = document.getElementById('ordNombre');
+        const tel = document.getElementById('ordTelefono');
+        const cant = document.getElementById('ordCantidad');
+        if (!nombre.value.trim()) { nombre.classList.add('is-invalid'); valid = false; }
+        else nombre.classList.remove('is-invalid');
+        if (!tel.value.match(/^[0-9\s\-+()]{7,}$/)) { tel.classList.add('is-invalid'); valid = false; }
+        else tel.classList.remove('is-invalid');
+        if (!cant.value || parseInt(cant.value) < 1) { cant.classList.add('is-invalid'); valid = false; }
+        else cant.classList.remove('is-invalid');
+        if (!valid) return;
+        orderModal.hide();
+        // Mostrar toast
+        const toastEl = document.getElementById('orderToast');
+        const toast = new bootstrap.Toast(toastEl);
+        toast.show();
+        this.reset();
+    });
+
+    // Validación y envío del formulario de contacto
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        let valid = true;
+        const nombre = document.getElementById('nombre');
+        const correo = document.getElementById('correo');
+        const mensaje = document.getElementById('mensaje');
+        // Validación simple
+        if (!nombre.value.trim()) { nombre.classList.add('is-invalid'); valid = false; }
+        else nombre.classList.remove('is-invalid');
+        if (!correo.value.match(/^[\w\.-]+@[\w\.-]+\.\w{2,}$/)) { correo.classList.add('is-invalid'); valid = false; }
+        else correo.classList.remove('is-invalid');
+        if (!mensaje.value.trim()) { mensaje.classList.add('is-invalid'); valid = false; }
+        else mensaje.classList.remove('is-invalid');
+        if (!valid) return;
+        document.getElementById('formAlert').classList.remove('d-none');
+        this.reset();
+        setTimeout(() => document.getElementById('formAlert').classList.add('d-none'), 3500);
+    });
+
+    // Elimina la clase is-invalid al escribir
+    document.querySelectorAll('#contactForm .form-control, #orderForm .form-control').forEach(input => {
+        input.addEventListener('input', function() {
+            this.classList.remove('is-invalid');
+        });
+    });
     </script>
 </body>
 </html>
