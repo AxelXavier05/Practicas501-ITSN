@@ -1,0 +1,24 @@
+/* Base (tomado de tu archivo y ajustado) */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Pequeños toques visuales (opcional) */
+.container {
+  max-width: 720px;
+}
+
+#resultado[readonly] {
+  background: #f8f9fa;
+}
+
+.is-invalid {
+  border-color: #dc3545;
+}
+
+#msg.error {
+  color: #dc3545 !important;
+}

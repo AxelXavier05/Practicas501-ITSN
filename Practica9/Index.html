@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 9</title>
+    <link rel="stylesheet" href="CSS/estilos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Registro de usuarios</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" required class="form-control" placeholder="Escribe tu nombre">
+            </div>
+            <div class="col-6">
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" required class="form-control" placeholder="Escribe tu apellido">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required class="form-control" placeholder="Escribe tu email">
+            </div>
+            <div class="col-6">
+                <label for="fecha">Fecha de nacimiento</label>
+                <input type="date" id="fecha" required class="form-control" placeholder="ingresa tu fecha de nacimiento">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label for="estado">Estado:</label>
+                <select name="estado" id="estado" class="form-select" required>
+                    <option value="1">Aguascalientes</option>
+                    <option value="2">Baja California</option>
+                    <option value="3">Baja California Sur</option>
+                    <option value="4">Campeche</option>
+                    <option value="5">Coahuila</option>
+                    <option value="6">Colima</option>
+                    <option value="7">Chiapas</option>
+                    <option value="8">Chihuahua</option>
+                    <option value="9">Ciudad de México</option>
+                    <option value="10">Durango</option>
+                    <option value="11">Guanajuato</option>
+                    <option value="12">Guerrero</option>
+                    <option value="13">Hidalgo</option>
+                    <option value="14">Jalisco</option>
+                    <option value="15">México</option>
+                    <option value="16">Michoacán</option>
+                    <option value="17">Morelos</option>
+                    <option value="18">Nayarit</option>
+                    <option value="19">Nuevo León</option>
+                    <option value="20">Oaxaca</option>
+                    <option value="21">Puebla</option>
+                    <option value="22">Querétaro</option>
+                    <option value="23">Quintana Roo</option>
+                    <option value="24">San Luis Potosí</option>
+                    <option value="25">Sinaloa</option>
+                    <option value="26">Sonora</option>
+                    <option value="27">Tabasco</option>
+                    <option value="28">Tamaulipas</option>
+                    <option value="29">Tlaxcala</option>
+                    <option value="30">Veracruz</option>
+                    <option value="31">Yucatán</option>
+                    <option value="32">Zacatecas</option>
+                </select>
+            </div>
+            <div class="col-6">
+                <label for="ciudad">Ciudad</label>
+                <input type="text" id="ciudad" required class="form-control" placeholder="Escribe tu ciudad">
+            </div>
+        </div>
+        <div class="col-6">
+            <label for="password">Ingresa Tu Contraseña:</label>
+            <input type="password" id="password" required class="form-control" placeholder="Escribe tu contraseña">
+        </div>
+        <div class="col-6">
+            <label for="confirmPassword">Confirma Tu Contraseña:</label>
+            <input type="password" id="confirmPassword" required class="form-control" placeholder="Confirma tu contraseña">
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" id="btnRegistrar" class="btn btn-primary mt-3">Registrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/Index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
