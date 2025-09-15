@@ -1,0 +1,35 @@
+:root{
+  --coffee:#6f4e37;
+  --coffee-dark:#533b2a;
+  --cream:#f5efe6;
+}
+
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans";}
+
+.bg-coffee{background-color:var(--coffee)!important;}
+.btn.btn-coffee{background-color:var(--coffee)!important;color:#fff!important;border-color:var(--coffee-dark)!important;}
+.btn.btn-coffee:hover,.btn.btn-coffee:focus{background-color:var(--coffee-dark)!important;color:#fff!important;border-color:var(--coffee-dark)!important;}
+
+.hero-cafe{
+  min-height:60vh;
+  background-image:url("../IMG/Cafe%20Inicio.jpg");
+  background-size:cover;
+  background-position:center;
+  position:relative;
+}
+.hero-cafe::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.35);}
+.hero-cafe>.container{position:relative;z-index:1;}
+.object-fit-cover{object-fit:cover;}
+
+.navbar .nav-link.active{font-weight:600;text-decoration:underline;text-underline-offset:4px;}
+
+.card-img-top{height:220px;object-fit:cover;}
+
+@media (max-width:576px){
+  .hero-cafe{
+    background-image:url("https://images.unsplash.com/photo-1461988091159-192b6df7054f?q=80&w=1200&auto=format&fit=crop");
+    background-position:center;
+  }
+}
+
+body{background-color:#f3eadf;}
