@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/estilos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
@@ -23,6 +22,13 @@
                     style="width:150px;height:150px">
                 </lord-icon>
                 <h1>Registro de usuarios</h1>
+
+                <svg width="80" height="80" viewBox="0 0 24 24" aria-label="Escudo seguro"
+                     xmlns="http://www.w3.org/2000/svg" role="img">
+                  <path d="M12 2l7 3v6c0 5-3.5 9-7 11-3.5-2-7-6-7-11V5l7-3z" fill="#0d6efd"/>
+                  <path d="M12 9a3 3 0 00-3 3v2h6v-2a3 3 0 00-3-3z" fill="#fff"/>
+                  <rect x="11" y="9" width="2" height="3" rx="1" fill="#fff"/>
+                </svg>
             </div>
         </div>
         <div class="row">
@@ -92,11 +98,11 @@
         <div class="row">
             <div class="col-6">
                 <label for="contrasena1">Ingresa tu contraseña:</label>
-                <input type="text" id="contrasena1" required class="form-control" placeholder="Contraseña">
+                <input type="password" id="contrasena1" required class="form-control" placeholder="Contraseña">
             </div>
             <div class="col-6">
                 <label for="contrasena2">Confirma tu contraseña:</label>
-                <input type="text" id="contrasena2" required class="form-control" placeholder="Confirma tu contraseña">
+                <input type="password" id="contrasena2" required class="form-control" placeholder="Confirma tu contraseña">
             </div>
         </div>
         <div class="row">
@@ -110,10 +116,11 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-12"> 
-                <p>Quiero que el formulario por default quede GTO seleccionado</p>
-                <p>En fecha de nacimiento me ponga la fecha actual</p>
-                <p>Hacer coincidir las contraseñas, deben tener minimo 8 caracteres, no deben llevar espacios, debe tener al menos un numero y una letra mayuscula</p>
-            </div>
+                <!--
+                    <p> Por default queda seleccionado Guanajuato</p>
+                    <p> La fecha de nacimiento se llena con la fecha actual</p>
+                    <p> Las contraseñas deben coincidir, tener mínimo 8 caracteres, sin espacios, al menos un número y una mayúscula</p>
+                --></div>
         </div>
     </div>
     <script src="js/index.js"></script>
