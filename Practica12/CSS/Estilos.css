@@ -1,0 +1,64 @@
+:root{
+    --bg: #0f172a;
+    --grad-a: #1e3a8a;
+    --grad-b: #9333ea;
+    --chip: #e2e8f0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f4f6fb;
+  margin: 0;
+}
+
+.award-banner{
+  background: linear-gradient(90deg, var(--grad-a), var(--grad-b));
+  letter-spacing: .5px;
+  font-weight: 700;
+}
+
+.card-track{
+  background: #fff;
+  border: 1px solid #eef1f5;
+  border-radius: 1rem;
+  padding: 12px 14px;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.card-track:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(16,24,40,.08);
+}
+
+.cover{
+  width: 64px; height: 64px; object-fit: cover; border-radius: .75rem;
+  border: 1px solid #e5e7eb;
+}
+
+.track-title{
+  font-weight: 700; margin: 0;
+  cursor: pointer; text-decoration: none; color: #111827;
+}
+.track-title:hover{ text-decoration: underline; }
+
+.track-artist, .track-album{
+  margin: 0; color: #6b7280;
+}
+
+.badge-fav{
+  background: var(--chip);
+  border: 1px solid #e5e7eb;
+  color: #111827;
+  font-weight: 600;
+  padding: .35rem .6rem;
+  border-radius: 999px;
+}
+
+.btn-icon{
+  border-radius: 12px !important;
+}
+
+@media (max-width: 767.98px){
+  .track-meta{
+    margin-top: .25rem;
+  }
+}
