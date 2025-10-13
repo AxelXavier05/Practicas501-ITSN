@@ -1,64 +1,133 @@
 :root{
-    --bg: #0f172a;
-    --grad-a: #1e3a8a;
-    --grad-b: #9333ea;
-    --chip: #e2e8f0;
+  --bg:#0b0f14;          /* fondo principal oscuro */
+  --panel:#121821;       /* paneles / tarjetas */
+  --panel-2:#0f141b;     /* hover */
+  --ink:#e5e7eb;         /* texto principal */
+  --muted:#96a0ab;       /* texto secundario */
+  --muted-2:#7b8591;
+  --brand:#1DB954;       /* Spotify green */
+  --line:#1f2a37;        /* bordes */
 }
 
-body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  background: #f4f6fb;
-  margin: 0;
+*{ box-sizing:border-box; }
+body.theme-dark{
+  background: radial-gradient(1200px 600px at 20% -10%, #102232 0%, transparent 60%) ,var(--bg);
+  color:var(--ink);
+  margin:0;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
 }
 
-.award-banner{
-  background: linear-gradient(90deg, var(--grad-a), var(--grad-b));
-  letter-spacing: .5px;
-  font-weight: 700;
+/* Header */
+.app-header{
+  background: linear-gradient(90deg, rgba(29,185,84,.15), rgba(29,185,84,.02));
+  border-bottom: 1px solid var(--line);
+}
+.spotify-logo{ display:grid; place-items:center; }
+.badge-soft{
+  background: rgba(29,185,84,.12);
+  border: 1px solid rgba(29,185,84,.35);
+  color: #cfead7;
+  padding:.4rem .7rem;
+  border-radius:999px;
+  font-weight:700;
 }
 
+/* Panel */
+.bg-panel{
+  background:var(--panel);
+  border:1px solid var(--line);
+}
+
+/* Separadores */
+.border-bottom-dark{ border-bottom:1px solid var(--line); }
+
+/* Inputs oscuros */
+.search-group .input-group-text{
+  background: var(--panel-2);
+  border:1px solid var(--line);
+  color:var(--muted);
+}
+.search-group .form-control{
+  background: var(--panel-2);
+  border:1px solid var(--line);
+  color:var(--ink);
+}
+.search-group .form-control::placeholder{ color:var(--muted); }
+
+/* Botones */
+.btn-outline-light{
+  --bs-btn-color: var(--ink);
+  --bs-btn-border-color: var(--line);
+  --bs-btn-hover-bg: var(--panel-2);
+  --bs-btn-hover-border-color: var(--brand);
+  --bs-btn-active-bg: var(--panel-2);
+  --bs-btn-active-border-color: var(--brand);
+}
+
+/* Tarjeta track */
 .card-track{
-  background: #fff;
-  border: 1px solid #eef1f5;
-  border-radius: 1rem;
-  padding: 12px 14px;
-  transition: transform .15s ease, box-shadow .15s ease;
+  background: var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:12px 14px;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
 }
 .card-track:hover{
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(16,24,40,.08);
+  background:var(--panel-2);
+  box-shadow: 0 14px 30px rgba(0,0,0,.35);
+  border-color:#223141;
 }
 
+/* Foto artista */
 .cover{
-  width: 64px; height: 64px; object-fit: cover; border-radius: .75rem;
-  border: 1px solid #e5e7eb;
+  width:64px; height:64px; object-fit:cover; border-radius:10px;
+  border:1px solid #223141; display:block;
 }
 
+/* Texto */
 .track-title{
-  font-weight: 700; margin: 0;
-  cursor: pointer; text-decoration: none; color: #111827;
+  font-weight:800; margin:0;
+  color:var(--ink); text-decoration:none; line-height:1.15;
 }
-.track-title:hover{ text-decoration: underline; }
+.track-title:hover{ text-decoration:underline; }
+.track-artist,.track-album{ margin:0; color:var(--muted); }
+.text-muted-2{ color:var(--muted-2) !important; }
 
-.track-artist, .track-album{
-  margin: 0; color: #6b7280;
-}
-
+/* Etiqueta favorito */
 .badge-fav{
-  background: var(--chip);
-  border: 1px solid #e5e7eb;
-  color: #111827;
-  font-weight: 600;
-  padding: .35rem .6rem;
-  border-radius: 999px;
+  background:transparent;
+  border:1px solid var(--line);
+  color:var(--ink);
+  padding:.35rem .6rem;
+  border-radius:999px;
+  display:inline-flex; align-items:center; gap:.4rem;
 }
 
-.btn-icon{
-  border-radius: 12px !important;
+/* Toast oscuro */
+.toast-dark{
+  background: #0e1319;
+  color: var(--ink);
+  border:1px solid var(--line);
 }
 
+/* Responsivo */
 @media (max-width: 767.98px){
-  .track-meta{
-    margin-top: .25rem;
-  }
+  .card-track{ padding:12px; }
+}
+/* Fix estado activo de los botones "Todas" / "Tus me gusta" en dark */
+.btn-outline-light{
+  --bs-btn-color: var(--ink);
+  --bs-btn-border-color: var(--line);
+  --bs-btn-hover-bg: var(--panel-2);
+  --bs-btn-hover-border-color: var(--brand);
+  --bs-btn-active-bg: var(--panel-2);
+  --bs-btn-active-border-color: var(--brand);
+  --bs-btn-active-color: var(--ink);         /* <- texto/ícono claros al estar activo */
+  --bs-btn-focus-shadow-rgb: 29,185,84;      /* halo verdoso al enfocar */
+}
+
+/* Un poco más de feedback visual al estar activo */
+.btn-group .btn.active{
+  box-shadow: 0 0 0 1px var(--brand) inset, 0 0 0 2px rgba(29,185,84,.15);
 }
