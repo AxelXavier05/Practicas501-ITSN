@@ -1,0 +1,20 @@
+ [
+  {
+    "nombre": "Abraham Perez",
+    "edad": 20,
+    "sueldo": 18000,
+    "foto": "https://randomuser.me/api/portraits/men/1.jpg"
+  },
+  {
+    "nombre": "Maria Gomez",
+    "edad": 25,
+    "sueldo": 22000,
+    "foto": "https://randomuser.me/api/portraits/women/1.jpg"
+  },
+  {
+    "nombre": "Luis Rodriguez",
+    "edad": 30,
+    "sueldo": 25000,
+    "foto": "https://randomuser.me/api/portraits/men/2.jpg"
+  }
+]
